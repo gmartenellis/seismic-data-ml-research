@@ -191,14 +191,19 @@ The project demonstrates several areas of computer science and data analysis.
 
 The analysis demonstrates how dimensionality reduction and unsupervised clustering can be applied to a historical earthquake catalog to explore structure within multidimensional seismic data.
 
-The primary machine learning visualizations include:
+### PCA + K-Means
 
-* **PCA + K-Means clustering**
-* **PCA + DBSCAN clustering**
+The PCA-reduced feature space was used to visualize the K-Means clustering results.
 
-These results provide a visual basis for examining how the two clustering approaches organize observations within the reduced feature space.
+![PCA and K-Means clustering](results/figures/pca_kmeans.png)
 
-Additional analysis and computational outputs are documented in the project notebooks.
+### PCA + DBSCAN
+
+The PCA-reduced feature space was also used to visualize the DBSCAN clustering results.
+
+![PCA and DBSCAN clustering](results/figures/pca_dbscan.png)
+
+These visualizations provide a direct comparison of the patterns identified by the two unsupervised clustering approaches.
 
 ---
 
