@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Seismic Data ML Research"
+message: "If you use this repository or build upon this work, please cite it as follows."
+type: software
+authors:
+
+* family-names: "Marten-Ellis"
+  given-names: "Geraldine I."
+  version: "1.0.0"
+  date-released: 2026
+  repository-code: "https://github.com/gmartenellis/seismic-data-ml-research"
+  abstract: "Graduate-level computer science capstone project applying principal component analysis and unsupervised clustering techniques, including K-Means and DBSCAN, to a historical earthquake catalog from Japan."
+  keywords:
+* machine learning
+* unsupervised learning
+* PCA
+* K-Means
+* DBSCAN
+* earthquake data
+* seismology
+* data analysis
