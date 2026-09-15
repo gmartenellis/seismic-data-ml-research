@@ -4,9 +4,9 @@
 
 This repository contains the code, analysis, and results for a graduate-level computer science capstone project applying machine learning and data analysis techniques to a historical earthquake catalog.
 
-The project uses earthquake data from Japan to explore **spatial, temporal, and feature-level patterns** in observed seismic events. The analysis focuses on how computational methods can be used to organize, transform, and examine multidimensional seismic data.
+The project uses earthquake data from Japan to explore **spatial, temporal, and feature-level patterns** in observed seismic events. The analysis focuses on how computational methods can be used to prepare, transform, visualize, and analyze multidimensional seismic data.
 
-Rather than attempting to predict future earthquakes, this project uses **unsupervised machine learning** to explore patterns within an existing seismic event catalog.
+Rather than attempting to predict future earthquakes, this project uses **unsupervised machine learning** to explore structure and patterns within an existing seismic event catalog.
 
 ---
 
@@ -26,20 +26,22 @@ The project was developed to:
 
 ## Dataset
 
-The analysis uses the **Earthquakes in Japan** dataset covering earthquake events from **2001–2018**.
+The analysis uses earthquake data obtained directly from the **U.S. Geological Survey (USGS) Earthquake Catalog**.
 
-The dataset contains recorded earthquake information including variables such as:
+The data were queried using a geographic bounding box covering Japan and a date range beginning on **January 1, 2000** and extending through **August 2026**.
 
-* Magnitude
-* Depth
-* Latitude
-* Longitude
-* Date and time
-* Other recorded seismic attributes
+After data cleaning and preparation, the final dataset contains **16,815 earthquake records across 22 columns**.
 
-The original dataset was obtained from Kaggle and is **not redistributed in this repository**.
+Although the dataset contains additional earthquake catalog attributes, four variables were selected as the primary features for the machine learning analysis:
 
-Instructions for obtaining and preparing the dataset are documented in [`data/README.md`](data/README.md).
+* **Longitude**
+* **Latitude**
+* **Magnitude**
+* **Depth**
+
+These features represent the geographic location and recorded characteristics of earthquake events and provide the feature set used for dimensionality reduction and unsupervised clustering.
+
+The dataset is not redistributed in this repository. The `data/` directory contains documentation describing the dataset and its preparation.
 
 ---
 
@@ -58,7 +60,7 @@ The earthquake catalog is examined and prepared for analysis through processes i
 * Feature selection
 * Data cleaning and transformation
 
-The goal is to produce a consistent dataset suitable for subsequent exploratory analysis and machine learning.
+The selected earthquake features—longitude, latitude, magnitude, and depth—are prepared for machine learning analysis. Because these variables have different numerical scales, the features are standardized before dimensionality reduction and clustering.
 
 ### 2. Exploratory Data Analysis
 
@@ -72,13 +74,13 @@ The analysis considers dimensions such as:
 * Temporal characteristics
 * Relationships among selected features
 
-The exploratory analysis provides context for the subsequent machine learning steps.
+The exploratory analysis provides context for the subsequent dimensionality-reduction and clustering steps.
 
 ### 3. Principal Component Analysis
 
 **Principal Component Analysis (PCA)** is applied as a dimensionality-reduction technique.
 
-PCA transforms the selected features into principal components that represent the major sources of variation within the feature space. The resulting representation is then used to support visualization and clustering analysis.
+PCA transforms the standardized earthquake features into principal components that represent major sources of variation within the feature space. The resulting lower-dimensional representation is used to support visualization and interpretation of the clustering results.
 
 ### 4. Unsupervised Clustering
 
@@ -87,23 +89,28 @@ Two unsupervised machine learning approaches are applied:
 * **K-Means clustering**
 * **DBSCAN clustering**
 
-K-Means partitions observations into a predefined number of clusters based on feature similarity, while DBSCAN identifies groups based on the density of observations and can distinguish observations that do not belong to dense clusters.
+K-Means partitions observations into a predefined number of clusters based on similarity within the feature space. Multiple values of K are evaluated to identify an appropriate cluster configuration.
 
-The two approaches provide complementary ways of examining structure within the seismic dataset.
+DBSCAN is used as a density-based alternative that does not require the number of clusters to be specified in advance and can identify observations that do not belong to dense clusters.
 
-### 5. Pattern Interpretation
+The two approaches provide complementary methods for examining structure within the seismic dataset.
 
-The resulting clustering structures are examined through quantitative outputs and visualizations.
+### 5. Model Evaluation and Pattern Interpretation
 
-The analysis focuses on:
+Clustering results are evaluated using quantitative measures and visualizations.
 
-* Characteristics of the resulting clusters
-* Relationships among the selected seismic features
-* Differences between K-Means and DBSCAN results
-* Patterns visible after dimensionality reduction
+The analysis considers:
+
+* Cluster structure and characteristics
+* Silhouette scores
+* Davies-Bouldin scores
+* Differences between K-Means and DBSCAN
+* Patterns visible in the PCA-reduced feature space
 * Limitations associated with interpreting unsupervised clusters
 
-The purpose is to evaluate the usefulness of these computational techniques for **exploratory analysis of seismic data**, rather than to establish physical causation or develop an operational forecasting system.
+For K-Means, multiple values of K are evaluated using clustering metrics, with the selected configuration based on the resulting evaluation measures.
+
+The purpose of the analysis is to assess the usefulness of unsupervised machine learning techniques for **exploratory analysis of seismic data**, rather than to establish physical causation or develop an operational earthquake forecasting system.
 
 ---
 
@@ -115,6 +122,7 @@ seismic-data-ml-research/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
+├── CITATION.cff
 │
 ├── notebooks/
 │   ├── 01_EDA_Data_Cleaning.ipynb
@@ -134,7 +142,7 @@ seismic-data-ml-research/
     └── README.md
 ```
 
-The repository structure is designed to separate analysis notebooks, data documentation, generated results, and reusable source code.
+The repository structure separates analysis notebooks, data documentation, generated results, and reusable source-code documentation.
 
 ---
 
@@ -161,6 +169,7 @@ The project demonstrates several areas of computer science and data analysis.
 * Data cleaning
 * Feature selection
 * Feature preparation
+* Feature standardization
 
 ### Exploratory Data Analysis
 
@@ -177,6 +186,7 @@ The project demonstrates several areas of computer science and data analysis.
 * K-Means clustering
 * DBSCAN clustering
 * Unsupervised pattern analysis
+* Cluster evaluation
 
 ### Data Visualization
 
@@ -189,7 +199,7 @@ The project demonstrates several areas of computer science and data analysis.
 
 ## Results
 
-The analysis demonstrates how dimensionality reduction and unsupervised clustering can be applied to a historical earthquake catalog to explore structure within multidimensional seismic data.
+The analysis demonstrates how dimensionality reduction and unsupervised clustering can be applied to an earthquake catalog to explore structure within multidimensional seismic data.
 
 ### PCA + K-Means
 
@@ -224,7 +234,7 @@ Several limitations should be considered when interpreting the results:
 
 Potential extensions of the project include:
 
-* Incorporating more recent seismic observations.
+* Incorporating additional and more recent seismic observations.
 * Exploring additional feature-engineering strategies.
 * Evaluating additional clustering algorithms.
 * Investigating alternative dimensionality-reduction techniques.
@@ -238,10 +248,9 @@ Potential extensions of the project include:
 
 This project was developed as a graduate capstone project for the **Master of Science in Computer Science** program at City University of Seattle.
 
-The project demonstrates the application of computer science concepts—including data preparation, exploratory data analysis, dimensionality reduction, unsupervised machine learning, clustering, and visualization—to a real-world seismic dataset.
+The project demonstrates the application of computer science concepts—including data preparation, exploratory data analysis, dimensionality reduction, unsupervised machine learning, clustering, model evaluation, and visualization—to a real-world seismic dataset.
 
 ---
-## References
 
 ## Selected References
 
@@ -259,11 +268,10 @@ The project demonstrates the application of computer science concepts—includin
 
 * Zacchei, E., & Brasil, R. (2024). K-means for earthquakes: Disaggregation analyses of small events by considering wave components and soil types. *Arabian Journal of Geosciences, 17*(11). https://doi.org/10.1007/s12517-024-12113-0
 
-* Kaggle. (n.d.). *Earthquakes in Japan (2001–2018)*. Dataset by aerodinamicc. The dataset was originally acquired from the USGS Earthquake Catalog.
-
 The complete bibliography is maintained separately as part of the academic capstone documentation.
 
 ---
+
 ## Author
 
 **Geraldine I. Marten-Ellis**
