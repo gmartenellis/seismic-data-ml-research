@@ -241,7 +241,29 @@ This project was developed as a graduate capstone project for the **Master of Sc
 The project demonstrates the application of computer science concepts—including data preparation, exploratory data analysis, dimensionality reduction, unsupervised machine learning, clustering, and visualization—to a real-world seismic dataset.
 
 ---
+## References
 
+## Selected References
+
+* Aiken, C., & Obara, K. (2021). Data-driven clustering reveals more than 900 small magnitude slow earthquakes and their characteristics. *Geophysical Research Letters, 48*(11). https://doi.org/10.1029/2020GL091764
+
+* Beroza, G. C., Segou, M., & Mostafa Mousavi, S. (2021). Machine learning and earthquake forecasting—Next steps. *Nature Communications, 12*(1). https://doi.org/10.1038/s41467-021-24952-6
+
+* Essing, D., & Poli, P. (2024). Unraveling earthquake clusters composing the 2014 Alto Tiberina earthquake swarm via unsupervised learning. *Journal of Geophysical Research: Solid Earth, 129*(1). https://doi.org/10.1029/2022JB026237
+
+* Iaccarino, A. G., & Picozzi, M. (2023). Detecting the preparatory phase of induced earthquakes at the Geysers (California) using K-means clustering. *Journal of Geophysical Research: Solid Earth, 128*(10). https://doi.org/10.1029/2023JB026429
+
+* Mousavi, S. M., & Beroza, G. C. (2023). Machine learning in earthquake seismology. *Annual Review of Earth and Planetary Sciences, 51*(1), 105–129. https://doi.org/10.1146/annurev-earth-071822-100323
+
+* Piegari, E., Camanni, G., Mercurio, M., & Marzocchi, W. (2024). Illuminating the hierarchical segmentation of faults through an unsupervised learning approach applied to clouds of earthquake hypocenters. *Earth and Space Science, 11*(10). https://doi.org/10.1029/2023EA003267
+
+* Zacchei, E., & Brasil, R. (2024). K-means for earthquakes: Disaggregation analyses of small events by considering wave components and soil types. *Arabian Journal of Geosciences, 17*(11). https://doi.org/10.1007/s12517-024-12113-0
+
+* Kaggle. (n.d.). *Earthquakes in Japan (2001–2018)*. Dataset by aerodinamicc. The dataset was originally acquired from the USGS Earthquake Catalog.
+
+The complete bibliography is maintained separately as part of the academic capstone documentation.
+
+---
 ## Author
 
 **Geraldine I. Marten-Ellis**
