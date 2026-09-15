@@ -2,8 +2,8 @@
 
 This directory is reserved for reusable Python source code supporting the seismic data analysis workflow.
 
-The primary analysis for this project is currently implemented in the Jupyter notebooks located in:
+The primary computational analysis for this project is currently implemented in the Jupyter notebooks located in:
 
 `notebooks/`
 
-Standalone scripts and reusable functions can be added here as the project is further developed.
+At the current stage of the project, no standalone Python modules or scripts are maintained in this directory. Reusable functions and processing scripts may be added here in future development as the analysis pipeline is expanded.
