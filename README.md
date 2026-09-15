@@ -117,8 +117,8 @@ seismic-data-ml-research/
 ├── .gitignore
 │
 ├── notebooks/
-│   ├── [EDA and data-cleaning notebook]
-│   ├── [machine-learning notebook]
+│   ├── 01_EDA_Data_Cleaning.ipynb
+│   ├── 02_ML_Modeling.ipynb
 │   └── README.md
 │
 ├── data/
