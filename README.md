@@ -28,7 +28,7 @@ The project was developed to:
 
 The analysis uses earthquake data obtained directly from the **U.S. Geological Survey (USGS) Earthquake Catalog**.
 
-The data were queried using a geographic bounding box covering Japan and a date range beginning on **January 1, 2000** and extending through **August 2026**.
+The data were queried using a geographic bounding box covering Japan and a date range beginning on **January 1, 2000** and extending through **September 5, 2026**.
 
 After data cleaning and preparation, the final dataset contains **16,815 earthquake records across 22 columns**.
 
@@ -60,7 +60,7 @@ The earthquake catalog is examined and prepared for analysis through processes i
 * Feature selection
 * Data cleaning and transformation
 
-The selected earthquake features—longitude, latitude, magnitude, and depth—are prepared for machine learning analysis. Because these variables have different numerical scales, the features are standardized before dimensionality reduction and clustering.
+The selected earthquake features—longitude, latitude, magnitude, and depth—are prepared for machine learning analysis. Because these variables have different numerical scales, the features are standardized before clustering and dimensionality reduction.
 
 ### 2. Exploratory Data Analysis
 
@@ -76,15 +76,9 @@ The analysis considers dimensions such as:
 
 The exploratory analysis provides context for the subsequent dimensionality-reduction and clustering steps.
 
-### 3. Principal Component Analysis
+### 3. Unsupervised Clustering
 
-**Principal Component Analysis (PCA)** is applied as a dimensionality-reduction technique.
-
-PCA transforms the standardized earthquake features into principal components that represent major sources of variation within the feature space. The resulting lower-dimensional representation is used to support visualization and interpretation of the clustering results.
-
-### 4. Unsupervised Clustering
-
-Two unsupervised machine learning approaches are applied:
+Two unsupervised machine learning approaches are applied to the **standardized feature data**:
 
 * **K-Means clustering**
 * **DBSCAN clustering**
@@ -95,9 +89,17 @@ DBSCAN is used as a density-based alternative that does not require the number o
 
 The two approaches provide complementary methods for examining structure within the seismic dataset.
 
+### 4. Principal Component Analysis
+
+**Principal Component Analysis (PCA)** is applied to the standardized feature data as a dimensionality-reduction technique.
+
+PCA transforms the four standardized earthquake features into principal components that represent major sources of variation within the feature space.
+
+The PCA representation is used to **visualize the clustering results in a reduced-dimensional space**. The cluster assignments themselves are generated using the standardized feature data rather than the PCA-transformed data.
+
 ### 5. Model Evaluation and Pattern Interpretation
 
-Clustering results are evaluated using quantitative measures and visualizations.
+The clustering results are evaluated using quantitative measures and visualizations.
 
 The analysis considers:
 
@@ -108,7 +110,9 @@ The analysis considers:
 * Patterns visible in the PCA-reduced feature space
 * Limitations associated with interpreting unsupervised clusters
 
-For K-Means, multiple values of K are evaluated using clustering metrics, with the selected configuration based on the resulting evaluation measures.
+For K-Means, multiple values of K are evaluated using clustering metrics. The final configuration uses **K = 3**, selected based on the highest silhouette score among the evaluated K values.
+
+For DBSCAN, clustering is performed using density-based parameters and observations identified as noise are excluded when calculating the internal clustering evaluation metrics.
 
 The purpose of the analysis is to assess the usefulness of unsupervised machine learning techniques for **exploratory analysis of seismic data**, rather than to establish physical causation or develop an operational earthquake forecasting system.
 
