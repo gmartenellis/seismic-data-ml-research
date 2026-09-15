@@ -2,11 +2,11 @@
 
 ## Overview
 
-This repository contains the code, analysis, and results for a graduate-level computer science capstone project focused on applying machine learning and data analysis techniques to earthquake data.
+This repository contains the code, analysis, and results for a graduate-level computer science capstone project applying machine learning and data analysis techniques to a historical earthquake catalog.
 
-The project examines seismic activity in Japan using a historical earthquake catalog and explores whether computational methods can identify meaningful **spatial, temporal, and feature-based patterns** within the data.
+The project uses earthquake data from Japan to explore **spatial, temporal, and feature-level patterns** in observed seismic events. The analysis focuses on how computational methods can be used to organize, transform, and examine multidimensional seismic data.
 
-Rather than attempting to predict individual earthquakes, the project focuses on using data-driven methods to **characterize and analyze patterns in observed seismic activity**.
+Rather than attempting to predict future earthquakes, this project uses **unsupervised machine learning** to explore patterns within an existing seismic event catalog.
 
 ---
 
@@ -15,11 +15,12 @@ Rather than attempting to predict individual earthquakes, the project focuses on
 The project was developed to:
 
 * Prepare and validate a real-world seismic dataset for machine learning analysis.
-* Explore spatial, temporal, and statistical characteristics of earthquake activity.
-* Identify relationships and patterns among selected seismic features.
-* Apply dimensionality-reduction and clustering techniques to the prepared data.
-* Evaluate the usefulness of unsupervised machine learning for exploring seismic patterns.
-* Demonstrate a reproducible machine learning workflow using Python.
+* Explore the characteristics and relationships of selected earthquake features.
+* Prepare seismic features for machine learning through data cleaning and transformation.
+* Apply **Principal Component Analysis (PCA)** for dimensionality reduction.
+* Apply **K-Means and DBSCAN** clustering to the prepared data.
+* Compare and interpret the patterns produced by different unsupervised learning approaches.
+* Demonstrate a reproducible Python-based machine learning workflow using real-world data.
 
 ---
 
@@ -27,26 +28,28 @@ The project was developed to:
 
 The analysis uses the **Earthquakes in Japan** dataset covering earthquake events from **2001–2018**.
 
-The dataset contains seismic event information that can be used to examine characteristics such as:
+The dataset contains recorded earthquake information including variables such as:
 
 * Magnitude
 * Depth
 * Latitude
 * Longitude
 * Date and time
-* Other recorded earthquake attributes
+* Other recorded seismic attributes
 
-The dataset was obtained from Kaggle and is not redistributed through this repository.
+The original dataset was obtained from Kaggle and is **not redistributed in this repository**.
+
+Instructions for obtaining and preparing the dataset are documented in [`data/README.md`](data/README.md).
 
 ---
 
 ## Methodology
 
-The project follows a structured data analysis and machine learning workflow.
+The project follows a structured data analysis and unsupervised machine learning workflow.
 
 ### 1. Data Preparation
 
-The raw earthquake data was examined and prepared for analysis through:
+The earthquake catalog is examined and prepared for analysis through processes including:
 
 * Data inspection
 * Data-type validation
@@ -55,42 +58,52 @@ The raw earthquake data was examined and prepared for analysis through:
 * Feature selection
 * Data cleaning and transformation
 
+The goal is to produce a consistent dataset suitable for subsequent exploratory analysis and machine learning.
+
 ### 2. Exploratory Data Analysis
 
-Exploratory analysis was conducted to understand the characteristics of the seismic catalog and identify relationships among the selected variables.
+Exploratory data analysis is used to examine the characteristics and relationships of the selected seismic variables.
 
-The analysis examines patterns related to:
+The analysis considers dimensions such as:
 
 * Earthquake magnitude
 * Earthquake depth
-* Geographic location
-* Temporal activity
-* Relationships among seismic features
+* Geographic coordinates
+* Temporal characteristics
+* Relationships among selected features
 
-Visualizations are used throughout the analysis to support interpretation of the data.
+The exploratory analysis provides context for the subsequent machine learning steps.
 
-### 3. Dimensionality Reduction
+### 3. Principal Component Analysis
 
-**Principal Component Analysis (PCA)** is used to transform the selected seismic features into a lower-dimensional representation.
+**Principal Component Analysis (PCA)** is applied as a dimensionality-reduction technique.
 
-This provides a way to examine the underlying structure of the feature space while reducing redundancy among correlated variables.
+PCA transforms the selected features into principal components that represent the major sources of variation within the feature space. The resulting representation is then used to support visualization and clustering analysis.
 
-### 4. Clustering
+### 4. Unsupervised Clustering
 
-Unsupervised clustering is used to investigate whether earthquake events form meaningful groups based on their characteristics.
+Two unsupervised machine learning approaches are applied:
 
-The clustering analysis provides a computational approach for exploring patterns within the seismic catalog without relying on predefined class labels.
+* **K-Means clustering**
+* **DBSCAN clustering**
 
-### 5. Evaluation and Interpretation
+K-Means partitions observations into a predefined number of clusters based on feature similarity, while DBSCAN identifies groups based on the density of observations and can distinguish observations that do not belong to dense clusters.
 
-The resulting patterns are examined using appropriate quantitative measures and visualizations.
+The two approaches provide complementary ways of examining structure within the seismic dataset.
 
-The analysis focuses on understanding:
+### 5. Pattern Interpretation
 
-* The characteristics of identified clusters
-* Relationships among seismic features
-* Spatial and temporal distribution of observations
-* The usefulness and limitations of the applied machine learning techniques
+The resulting clustering structures are examined through quantitative outputs and visualizations.
+
+The analysis focuses on:
+
+* Characteristics of the resulting clusters
+* Relationships among the selected seismic features
+* Differences between K-Means and DBSCAN results
+* Patterns visible after dimensionality reduction
+* Limitations associated with interpreting unsupervised clusters
+
+The purpose is to evaluate the usefulness of these computational techniques for **exploratory analysis of seismic data**, rather than to establish physical causation or develop an operational forecasting system.
 
 ---
 
@@ -100,25 +113,28 @@ The analysis focuses on understanding:
 seismic-data-ml-research/
 │
 ├── README.md
+├── requirements.txt
+├── .gitignore
 │
 ├── notebooks/
-│   ├── 01_eda_data_cleaning.ipynb
-│   └── 02_ml_model.ipynb
+│   ├── [EDA and data-cleaning notebook]
+│   ├── [machine-learning notebook]
+│   └── README.md
 │
 ├── data/
 │   └── README.md
 │
 ├── results/
+│   ├── README.md
 │   └── figures/
+│       ├── pca_kmeans.png
+│       └── pca_dbscan.png
 │
-├── src/
-│
-├── requirements.txt
-│
-└── .gitignore
+└── src/
+    └── README.md
 ```
 
-The repository structure may evolve as the project is refined and additional documentation and results are added.
+The repository structure is designed to separate analysis notebooks, data documentation, generated results, and reusable source code.
 
 ---
 
@@ -136,43 +152,53 @@ The repository structure may evolve as the project is refined and additional doc
 
 ## Key Areas of Analysis
 
-The project combines several areas of computer science and data analysis:
+The project demonstrates several areas of computer science and data analysis.
 
-**Data Engineering**
+### Data Preparation
 
 * Data ingestion
+* Data validation
 * Data cleaning
+* Feature selection
 * Feature preparation
 
-**Data Analysis**
+### Exploratory Data Analysis
 
-* Exploratory data analysis
-* Statistical examination
-* Spatial and temporal analysis
+* Descriptive analysis
+* Feature relationships
+* Spatial characteristics
+* Temporal characteristics
+* Multidimensional data exploration
 
-**Machine Learning**
+### Machine Learning
 
+* Principal Component Analysis
 * Dimensionality reduction
-* Unsupervised learning
-* Clustering
-* Model evaluation
+* K-Means clustering
+* DBSCAN clustering
+* Unsupervised pattern analysis
 
-**Data Visualization**
+### Data Visualization
 
-* Statistical visualizations
-* Geographic analysis
+* Exploratory visualizations
+* PCA-based visualization
 * Cluster visualization
-* Interpretation of multidimensional data
+* Comparative interpretation of machine learning results
 
 ---
 
 ## Results
 
-The analysis demonstrates how machine learning and visualization techniques can be applied to a seismic event catalog to explore relationships and patterns that may not be immediately apparent from the raw data.
+The analysis demonstrates how dimensionality reduction and unsupervised clustering can be applied to a historical earthquake catalog to explore structure within multidimensional seismic data.
 
-Detailed results, visualizations, and interpretation are available in the project notebooks.
+The primary machine learning visualizations include:
 
-> **Note:** This project is an exploratory analysis of historical earthquake data. The results should not be interpreted as an earthquake prediction system or as evidence of causal relationships between seismic events.
+* **PCA + K-Means clustering**
+* **PCA + DBSCAN clustering**
+
+These results provide a visual basis for examining how the two clustering approaches organize observations within the reduced feature space.
+
+Additional analysis and computational outputs are documented in the project notebooks.
 
 ---
 
@@ -181,24 +207,25 @@ Detailed results, visualizations, and interpretation are available in the projec
 Several limitations should be considered when interpreting the results:
 
 * The analysis is based on a historical earthquake catalog and therefore reflects the characteristics and limitations of the available data.
-* Clustering results depend on the selected features, preprocessing decisions, and machine learning parameters.
-* Unsupervised clusters do not necessarily represent distinct physical or geological earthquake processes.
-* The analysis identifies patterns in observed data but does not establish causation.
-* The project does not provide operational earthquake forecasting or prediction.
+* Results depend on the selected features and preprocessing decisions.
+* Clustering results are sensitive to algorithm-specific parameters.
+* Unsupervised clusters do not necessarily correspond to distinct physical or geological earthquake processes.
+* The analysis identifies patterns in observed data but does not establish causal relationships.
+* The project does not provide earthquake prediction or operational earthquake forecasting.
 
 ---
 
 ## Future Work
 
-Future development could extend the project through:
+Potential extensions of the project include:
 
 * Incorporating more recent seismic observations.
-* Evaluating additional clustering approaches.
 * Exploring additional feature-engineering strategies.
+* Evaluating additional clustering algorithms.
 * Investigating alternative dimensionality-reduction techniques.
-* Comparing results across different parameter configurations.
-* Expanding visualization and interactive analytical capabilities.
-* Developing a more comprehensive data pipeline for continued seismic-data analysis.
+* Comparing clustering results across different parameter configurations.
+* Expanding visualization and analytical capabilities.
+* Developing a more comprehensive and repeatable seismic-data processing pipeline.
 
 ---
 
@@ -206,7 +233,7 @@ Future development could extend the project through:
 
 This project was developed as a graduate capstone project for the **Master of Science in Computer Science** program at City University of Seattle.
 
-The project demonstrates the application of computer science concepts—including data preparation, exploratory analysis, machine learning, dimensionality reduction, clustering, and visualization—to a real-world seismic dataset.
+The project demonstrates the application of computer science concepts—including data preparation, exploratory data analysis, dimensionality reduction, unsupervised machine learning, clustering, and visualization—to a real-world seismic dataset.
 
 ---
 
