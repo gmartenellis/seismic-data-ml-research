@@ -1,0 +1,31 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.so
+
+# Jupyter Notebook
+
+.ipynb_checkpoints/
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+
+# Local data files
+
+data/*.csv
+data/*.xlsx
+data/*.xls
+data/*.json
+
+# Local outputs
+
+*.log
+
+# Operating system files
+
+.DS_Store
+Thumbs.db
