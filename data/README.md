@@ -2,28 +2,47 @@
 
 ## Source
 
-The primary dataset used in this project is the **Earthquakes in Japan** dataset available through Kaggle.
+The dataset used in this project was obtained directly from the **U.S. Geological Survey (USGS) Earthquake Catalog**.
 
-**Dataset:** Earthquakes in Japan
-**Source:** Kaggle
-**Coverage:** 2001–2018
+**Source:** USGS Earthquake Catalog
+**Geographic scope:** Japan
+**Coverage:** January 1, 2000 – August 2026
 
-The dataset contains recorded earthquake events and associated seismic characteristics used for data cleaning, exploratory analysis, feature preparation, dimensionality reduction, and clustering.
+The data were retrieved using the USGS earthquake search interface with a geographic bounding box covering Japan and the specified date range.
+
+## Dataset
+
+After data cleaning and preparation, the final dataset contains:
+
+* **16,815 earthquake records**
+* **22 columns**
+* **4 machine learning features**
+
+The four features used for the machine learning analysis are:
+
+* Longitude
+* Latitude
+* Magnitude
+* Depth
+
+The dataset contains additional earthquake catalog attributes that were retained during the data-preparation process but were not used as primary features in the clustering analysis.
 
 ## Data Availability
 
-The original dataset is not included in this repository.
+The downloaded USGS dataset is **not included in this repository**.
 
-To reproduce the analysis, obtain the dataset from its original Kaggle source and place the downloaded data file in this directory.
+Because the data were obtained from the USGS Earthquake Catalog, users wishing to reproduce the analysis should retrieve the corresponding earthquake catalog data directly from the USGS using the documented geographic and temporal scope.
 
-The notebooks contain the data-loading and preprocessing steps required for the analysis.
+The repository does not redistribute the downloaded earthquake data.
 
 ## Data Processing
 
-The raw dataset is processed through the data-cleaning and exploratory-analysis workflow documented in:
+The dataset is processed through the data-cleaning and exploratory-analysis workflow documented in:
 
-`notebooks/01_eda_data_cleaning.ipynb`
+`notebooks/01_EDA_Data_Cleaning.ipynb`
 
-The resulting prepared data is then used by:
+The prepared data are then used for dimensionality reduction and unsupervised machine learning in:
 
-`notebooks/02_ml_model.ipynb`
+`notebooks/02_ML_Modeling.ipynb`
+
+The machine learning workflow uses the four selected features—longitude, latitude, mag
